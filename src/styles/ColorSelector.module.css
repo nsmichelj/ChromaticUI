@@ -1,0 +1,15 @@
+/* Customize color input appearance */
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+/* Firefox */
+input[type="color"]::-moz-color-swatch {
+  border: none;
+  border-radius: 50%;
+}

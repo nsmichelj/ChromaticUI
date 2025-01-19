@@ -1,11 +1,25 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "@/layouts/Layout.astro";
+import ColorSelector from "@/components/ColorSelector";
+import ExportModal from "@/components/ExportModal";
+import ColorPalette from "@/components/ColorPalette";
 ---
 
 <Layout>
-	<Welcome />
+  <div class="w-full h-full max-w-7xl m-auto p-2">
+    <div class="mt-16 mb-10 text-center">
+      <h1 class="text-5xl font-bold text-gray-800 mb-2">Colors generator</h1>
+      <p class="text-2xl text-gray-600 max-w-xl m-auto text-balance">
+        Dale vida a tus diseños con paletas de colores únicas y armoniosas
+      </p>
+    </div>
+
+    <div class="m-auto w-full max-w-xl px-6">
+      <ColorSelector client:load />
+    </div>
+    <div class="mx-auto w-full max-w-5xl px-6">
+      <ExportModal client:load />
+      <ColorPalette client:load />
+    </div>
+  </div>
 </Layout>
