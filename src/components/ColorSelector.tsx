@@ -1,15 +1,21 @@
 import React, { useEffect } from "react";
-import { Copy, RotateCcw } from "lucide-react";
+import {
+  Bookmark,
+  BookmarkCheck,
+  Copy,
+  RotateCcw,
+} from "lucide-react";
 import { useStore } from "@nanostores/react";
 import chroma from "chroma-js";
 
-import { $color } from "@/stores/color";
+import { $color, $savedColors, saveColor, removeColor } from "@/stores/color";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 import "@/styles/ColorSelector.module.css";
 
 export default function ColorSelector() {
+  const savedColors = useStore($savedColors);
   const color = useStore($color);
 
   useEffect(() => {
@@ -26,6 +32,14 @@ export default function ColorSelector() {
 
   const handleCopyColor = () => {
     navigator.clipboard.writeText(color);
+  };
+
+  const handleSaveColor = () => {
+    if (savedColors.includes(color)) {
+      removeColor(color);
+      return;
+    }
+    saveColor(color);
   };
 
   return (
@@ -64,6 +78,15 @@ export default function ColorSelector() {
           onClick={handleRandomColor}
         >
           <RotateCcw />
+        </Button>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          className="p-2 hover:bg-gray-200 [&_svg]:size-5"
+          onClick={handleSaveColor}
+        >
+          {savedColors.includes(color) ? <BookmarkCheck /> : <Bookmark />}
         </Button>
       </div>
     </div>
