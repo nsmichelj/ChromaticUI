@@ -50,7 +50,7 @@ export default function ExportModal() {
   }, [palette]);
 
   return (
-    <div className="flex justify-end">
+    <div>
       <Dialog>
         <DialogTrigger asChild>
           <Button

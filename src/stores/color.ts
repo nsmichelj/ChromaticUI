@@ -7,6 +7,7 @@ export const $savedColors = persistentAtom<string[]>("chomaticui-saved-colors", 
   encode: JSON.stringify,
   decode: JSON.parse,
 });
+export const $importedColors = atom<string[]>([]);
 
 export function saveColor(color:string) {
   if (!$savedColors.get().includes(color)) {

@@ -14,7 +14,7 @@ export default function SavedColors() {
   };
 
   return (
-    <div className="my-2 flex justify-center gap-4">
+    <div className="py-4 flex justify-center gap-4 flex-wrap">
       {savedColors.length > 0 ? (
         savedColors.map((color) => (
           <div className="relative group" key={color}>

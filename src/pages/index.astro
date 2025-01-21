@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import ColorSelector from "@/components/ColorSelector";
 import ExportModal from "@/components/ExportModal";
 import ColorPalette from "@/components/ColorPalette";
+import ImportModal from "@/components/ImportModal";
 import SavedColors from "@/components/SavedColors";
 ---
 
@@ -17,10 +18,13 @@ import SavedColors from "@/components/SavedColors";
 
     <div class="m-auto w-full max-w-xl px-6">
       <ColorSelector client:load />
-      <SavedColors client:only="react" />
     </div>
     <div class="mx-auto w-full max-w-5xl px-6">
-      <ExportModal client:load />
+      <SavedColors client:only="react" />
+      <div class="flex justify-end gap-1">
+        <ExportModal client:load />
+        <ImportModal client:load />
+      </div>
       <ColorPalette client:load />
     </div>
   </div>
