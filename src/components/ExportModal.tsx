@@ -55,7 +55,7 @@ export default function ExportModal() {
         <DialogTrigger asChild>
           <Button
             variant="outline"
-            className="px-4 py-2 rounded-lg font-semibold text-gray-800"
+            className="px-4 py-2 rounded-lg font-semibold dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
           >
             Exportar
           </Button>
@@ -79,8 +79,8 @@ export default function ExportModal() {
                     key={format}
                     className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                       selectedFormat === format
-                        ? "bg-blue-500 text-gray-100 hover:bg-blue-500"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        ? "bg-blue-500 text-gray-100 hover:bg-blue-500 dark:bg-blue-700"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:text-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900"
                     }`}
                     onClick={() => setSelectedFormat(format)}
                   >
@@ -99,7 +99,7 @@ export default function ExportModal() {
                 >
                   <Copy /> {copied ? "Copiado" : "Copiar"}
                 </Button>
-                <pre className="bg-gray-100 p-6 rounded-lg overflow-x-auto text-sm">
+                <pre className="bg-gray-100 p-6 rounded-lg overflow-x-auto text-sm dark:bg-gray-900 dark:text-gray-100">
                   {exportFormats[selectedFormat]}
                 </pre>
               </div>

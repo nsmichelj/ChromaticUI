@@ -101,7 +101,7 @@ export default function ExportModal() {
         <DialogTrigger asChild>
           <Button
             variant="outline"
-            className="px-4 py-2 rounded-lg font-semibold text-gray-800"
+            className="px-4 py-2 rounded-lg font-semibold dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
           >
             Importar
           </Button>
@@ -145,19 +145,21 @@ export default function ExportModal() {
               </TooltipProvider>
 
               <Button
-                className="mx-auto -top-0 -right-10 [&_svg]:size-5 bg-gray-900 hover:bg-gray-900"
+                className="mx-auto -top-0 -right-10 [&_svg]:size-5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                 onClick={handleImport}
+                variant="outline"
               >
                 Importar paleta
               </Button>
 
               <Button
-                className="mx-auto -top-0 -right-10 [&_svg]:size-5 bg-gray-900 hover:bg-gray-900"
+                className="mx-auto -top-0 -right-10 [&_svg]:size-5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                 onClick={() => {
                   setImagePreview("");
                   setPalette([]);
                 }}
                 size="icon"
+                variant="outline"
               >
                 <Undo2 />
               </Button>

@@ -49,7 +49,7 @@ export default function ColorSelector() {
           <input
             type="color"
             title="color"
-            className="size-8 rounded-full appearance-none cursor-pointer border-4 border-white ring-2 ring-gray-200 overflow-hidden"
+            className="size-8 rounded-full appearance-none cursor-pointer border-4 border-gray-50 ring-1 ring-gray-200 overflow-hidden dark:border-gray-700 dark:ring-gray-800"
             value={color}
             onChange={handleSetColor}
           />
@@ -57,7 +57,7 @@ export default function ColorSelector() {
 
         <Input
           type="text"
-          className="text-gray-600 text-base md:text-base rounded-lg p-2.5 bg-gray-50 font-semibold"
+          className="text-gray-600 text-base md:text-base rounded-lg p-2.5 bg-gray-50 font-semibold dark:bg-gray-800 dark:text-gray-50"
           value={color}
           onChange={handleSetColor}
         />
@@ -65,7 +65,7 @@ export default function ColorSelector() {
         <Button
           variant="ghost"
           size="icon"
-          className="p-2 hover:bg-gray-200 [&_svg]:size-5"
+          className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 [&_svg]:size-5"
           onClick={handleCopyColor}
         >
           <Copy />
@@ -74,7 +74,7 @@ export default function ColorSelector() {
         <Button
           variant="ghost"
           size="icon"
-          className="p-2 hover:bg-gray-200 [&_svg]:size-5"
+          className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 [&_svg]:size-5"
           onClick={handleRandomColor}
         >
           <RotateCcw />
@@ -83,7 +83,7 @@ export default function ColorSelector() {
         <Button
           variant="ghost"
           size="icon"
-          className="p-2 hover:bg-gray-200 [&_svg]:size-5"
+          className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 [&_svg]:size-5"
           onClick={handleSaveColor}
         >
           {savedColors.includes(color) ? <BookmarkCheck /> : <Bookmark />}
