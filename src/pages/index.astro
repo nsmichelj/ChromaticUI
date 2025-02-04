@@ -5,13 +5,18 @@ import ExportModal from "@/components/ExportModal";
 import ColorPalette from "@/components/ColorPalette";
 import ImportModal from "@/components/ImportModal";
 import SavedColors from "@/components/SavedColors";
+import EditModal from "@/components/EditModal";
 ---
 
 <Layout>
   <div class="w-full max-w-7xl m-auto p-2">
     <div class="mt-16 mb-10 text-center">
-      <h1 class="text-5xl font-bold text-gray-800 dark:text-gray-100 mb-2">Colors generator</h1>
-      <p class="text-2xl text-gray-600 dark:text-gray-400 max-w-xl m-auto text-balance">
+      <h1 class="text-5xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+        Colors generator
+      </h1>
+      <p
+        class="text-2xl text-gray-600 dark:text-gray-400 max-w-xl m-auto text-balance"
+      >
         Dale vida a tus diseños con paletas de colores únicas y armoniosas
       </p>
     </div>
@@ -24,6 +29,7 @@ import SavedColors from "@/components/SavedColors";
       <div class="flex justify-end gap-1">
         <ExportModal client:load />
         <ImportModal client:load />
+        <EditModal client:load />
       </div>
       <ColorPalette client:load />
     </div>

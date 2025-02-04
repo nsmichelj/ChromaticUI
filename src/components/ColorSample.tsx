@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function ColorSample({color, onClick, children}: {color: string, onClick: () => void, children?: React.ReactNode}) {
+export default function ColorSample({color, selected, onClick, children}: {color: string, selected?:boolean, onClick: () => void, children?: React.ReactNode}) {
   return (
     <div
-      className="size-8 rounded-lg cursor-pointer transition-transform hover:scale-105"
+      className={`${selected ? 'size-10' : 'size-8' } rounded-lg cursor-pointer transition-transform hover:scale-105`}
       style={{
         background: color,
         outline: `${color} solid 2px`,
