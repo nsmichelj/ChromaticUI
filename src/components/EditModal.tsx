@@ -145,7 +145,7 @@ export default function EditModal() {
           <div className="flex gap-6 w-[80%] mx-auto my-4">
             <div className="flex flex-col items-center justify-center gap-2">
               <div
-                className={`size-28 rounded-lg shadow-sm transition-transform hover:scale-105`}
+                className={`size-28 rounded-lg shadow-xs transition-transform hover:scale-105`}
                 style={{ backgroundColor: selectedColor.color }}
                 onClick={() => handleCopyColor(selectedColor.color)}
               />

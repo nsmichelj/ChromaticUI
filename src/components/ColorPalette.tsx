@@ -22,7 +22,7 @@ export default function ColorPalette() {
     toast((
         <div className="flex items-center">
           <div
-            className="size-6 rounded-full inline-flex items-center justify-center flex-shrink-0"
+            className="size-6 rounded-full inline-flex items-center justify-center shrink-0"
             style={{ background: color }}
           />
           <div className="ms-3 text-sm font-normal">
@@ -41,7 +41,7 @@ export default function ColorPalette() {
       {palette.map((shade, index) => (
         <div key={index} className="space-y-1 cursor-pointer">
           <div
-            className={`h-12 w-full rounded-lg shadow-sm relative group flex justify-center items-center md:h-20`}
+            className={`h-12 w-full rounded-lg shadow-xs relative group flex justify-center items-center md:h-20`}
             style={{ backgroundColor: shade }}
             onClick={() => handleCopyColor(shade)}
           >
