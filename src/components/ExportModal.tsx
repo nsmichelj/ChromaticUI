@@ -13,29 +13,29 @@ import {
 import { Button } from "@/components/ui/button";
 import { useStore } from "@nanostores/react";
 import { getExportFormats } from "@/utils/generateFormats";
+import { Separator } from "@/components/ui/separator";
+import type { StylingTool, ColorFormat } from "@/types/styleFormats";
 
-type SelectedFormats =
-  | "tailwindHex"
-  | "tailwindHsl"
-  | "tailwindRgb"
-  | "cssHex"
-  | "cssHsl"
-  | "cssRgb"
-  | "scss";
+const StylingToolLabes: Record<StylingTool, string> = {
+  tailwind4: "Tailwind 4",
+  tailwind3: "Tailwind 3",
+  css: "CSS",
+  scss: "SCSS",
+};
 
-const formatLabels = {
-  tailwindHex: "Tailwind (HEX)",
-  tailwindHsl: "Tailwind (HSL)",
-  tailwindRgb: "Tailwind (RGB)",
-  cssHex: "CSS (HEX)",
-  cssHsl: "CSS (HSL)",
-  cssRgb: "CSS (RGB)",
-  scss: "SCSS Variables (HEX)",
+const ColorFormatLabes: Record<ColorFormat, string> = {
+  hex: "HEX",
+  rgb: "RGB",
+  hsl: "HSL",
+  oklch: "OKLCH",
 };
 
 export default function ExportModal() {
-  const [selectedFormat, setSelectedFormat] =
-    useState<SelectedFormats>("tailwindHex");
+  const [selectedStylingTool, setSelectedStylingTool] =
+    useState<StylingTool>("tailwind4");
+  const [selectedColorFormat, setSelectedColorFormat] =
+    useState<ColorFormat>("hex");
+
   const [copied, setCopied] = useState<boolean>(false);
   const palette = useStore($palette);
 
@@ -60,7 +60,7 @@ export default function ExportModal() {
             Exportar
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[700px] w-[700px]">
+        <DialogContent className="sm:max-w-[750px] w-[750px]">
           <DialogHeader>
             <DialogTitle>Exportar paleta de colores</DialogTitle>
             <DialogDescription>
@@ -70,37 +70,65 @@ export default function ExportModal() {
           </DialogHeader>
 
           <div className="flex h-full">
-            <nav className="w-[30%] pr-4">
+            <nav className="w-[30%] flex flex-row gap-4">
               <div className="flex flex-col gap-2">
+                <span className="font-bold">Estilo</span>
                 {(
-                  Object.keys(formatLabels) as Array<keyof typeof formatLabels>
+                  Object.keys(StylingToolLabes) as Array<
+                    keyof typeof StylingToolLabes
+                  >
                 ).map((format) => (
                   <Button
                     key={format}
                     className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
-                      selectedFormat === format
+                      selectedStylingTool === format
                         ? "bg-blue-500 text-gray-100 hover:bg-blue-500 dark:bg-blue-700"
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:text-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900"
                     }`}
-                    onClick={() => setSelectedFormat(format)}
+                    onClick={() => setSelectedStylingTool(format)}
                   >
-                    {formatLabels[format]}
+                    {StylingToolLabes[format]}
+                  </Button>
+                ))}
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="font-bold">Formato</span>
+                {(
+                  Object.keys(ColorFormatLabes) as Array<
+                    keyof typeof ColorFormatLabes
+                  >
+                ).map((format) => (
+                  <Button
+                    key={format}
+                    className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                      selectedColorFormat === format
+                        ? "bg-blue-500 text-gray-100 hover:bg-blue-500 dark:bg-blue-700"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:text-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900"
+                    }`}
+                    onClick={() => setSelectedColorFormat(format)}
+                  >
+                    {ColorFormatLabes[format]}
                   </Button>
                 ))}
               </div>
             </nav>
-            <main className="w-[70%] pl-4 overflow-auto">
+            <Separator orientation="vertical" className="mx-4" />
+            <main className="w-[70%] overflow-auto">
               <div className="relative">
                 <Button
                   className="absolute top-2 right-2 bg-gray-800 text-gray-100 hover:bg-gray-800/95"
                   size="sm"
                   variant="default"
-                  onClick={() => copyToClipboard(exportFormats[selectedFormat])}
+                  onClick={() =>
+                    copyToClipboard(
+                      exportFormats[selectedStylingTool][selectedColorFormat]
+                    )
+                  }
                 >
                   <Copy /> {copied ? "Copiado" : "Copiar"}
                 </Button>
                 <pre className="bg-gray-100 p-6 rounded-lg overflow-x-auto text-sm dark:bg-gray-900 dark:text-gray-100">
-                  {exportFormats[selectedFormat]}
+                  {exportFormats[selectedStylingTool][selectedColorFormat]}
                 </pre>
               </div>
             </main>
