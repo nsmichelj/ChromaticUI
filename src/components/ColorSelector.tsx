@@ -1,10 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  Bookmark,
-  BookmarkCheck,
-  Copy,
-  RotateCcw,
-} from "lucide-react";
+import { Bookmark, BookmarkCheck, Copy, RotateCcw } from "lucide-react";
 import { useStore } from "@nanostores/react";
 import chroma from "chroma-js";
 
@@ -57,7 +52,7 @@ export default function ColorSelector() {
 
         <Input
           type="text"
-          className="text-gray-600 text-base md:text-base rounded-lg p-2.5 bg-gray-50 font-semibold dark:bg-gray-800 dark:text-gray-50"
+          className="text-gray-600 text-base md:text-base rounded-lg p-2.5 bg-gray-50 font-semibold dark:bg-gray-800 dark:text-gray-50 border-gray-400 focus-visible:ring-1"
           value={color}
           onChange={handleSetColor}
         />
