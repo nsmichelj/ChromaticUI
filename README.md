@@ -96,7 +96,9 @@ git commit -m "Add descripción de tu cambio"
 git push origin feature/tu-mejora
 ```
 
-7. Abre una [PR](https://github.com/NSMichelJ/ChromaticUI/pulls) en GitHub 🎉
+> **📚 Para más detalles y buenas prácticas, consulta la [guía de contribución](https://github.com/NSMichelJ/ChromaticUI/blob/main/CONTRIBUTING.md). Allí encontrarás instrucciones detalladas sobre cómo configurar tu entorno, estructurar tus commits y asegurar que tus cambios sigan los estándares del proyecto.**
+
+1. Abre una [PR](https://github.com/NSMichelJ/ChromaticUI/pulls) en GitHub 🎉
 
 ## 📜 Licencia
 
