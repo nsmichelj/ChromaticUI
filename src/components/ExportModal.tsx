@@ -55,12 +55,12 @@ export default function ExportModal() {
         <DialogTrigger asChild>
           <Button
             variant="outline"
-            className="px-4 py-2 rounded-lg font-semibold dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+            className="rounded-lg px-4 py-2 font-semibold dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
           >
             Exportar
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[750px] w-[750px]">
+        <DialogContent className="sm:max-w-[750px]">
           <DialogHeader>
             <DialogTitle>Exportar paleta de colores</DialogTitle>
             <DialogDescription>
@@ -69,51 +69,57 @@ export default function ExportModal() {
             </DialogDescription>
           </DialogHeader>
 
-          <div className="flex h-full">
-            <nav className="w-[30%] flex flex-row gap-4">
-              <div className="flex flex-col gap-2">
+          <div className="grid gap-4 md:flex md:flex-row">
+            <nav className="flex w-full md:w-[30%] flex-col gap-4 md:flex-row">
+              <div className="w-full">
                 <span className="font-bold">Estilo</span>
-                {(
-                  Object.keys(StylingToolLabels) as Array<
-                    keyof typeof StylingToolLabels
-                  >
-                ).map((format) => (
-                  <Button
-                    key={format}
-                    className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
-                      selectedStylingTool === format
-                        ? "bg-blue-500 text-gray-100 hover:bg-blue-500 dark:bg-blue-700"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:text-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900"
-                    }`}
-                    onClick={() => setSelectedStylingTool(format)}
-                  >
-                    {StylingToolLabels[format]}
-                  </Button>
-                ))}
+                <div className="flex w-full flex-row flex-wrap gap-2 md:flex-col">
+                  {(
+                    Object.keys(StylingToolLabels) as Array<
+                      keyof typeof StylingToolLabels
+                    >
+                  ).map((format) => (
+                    <Button
+                      key={format}
+                      className={`rounded-lg px-4 py-2 font-semibold transition-colors ${
+                        selectedStylingTool === format
+                          ? "bg-blue-500 text-gray-100 hover:bg-blue-500 dark:bg-blue-700"
+                          : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-900"
+                      }`}
+                      onClick={() => setSelectedStylingTool(format)}
+                    >
+                      {StylingToolLabels[format]}
+                    </Button>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-col gap-2">
+
+              <div className="w-full">
                 <span className="font-bold">Formato</span>
-                {(
-                  Object.keys(ColorFormatLabels) as Array<
-                    keyof typeof ColorFormatLabels
-                  >
-                ).map((format) => (
-                  <Button
-                    key={format}
-                    className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
-                      selectedColorFormat === format
-                        ? "bg-blue-500 text-gray-100 hover:bg-blue-500 dark:bg-blue-700"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:text-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900"
-                    }`}
-                    onClick={() => setSelectedColorFormat(format)}
-                  >
-                    {ColorFormatLabels[format]}
-                  </Button>
-                ))}
+                <div className="flex w-full flex-row flex-wrap gap-2 md:flex-col">
+                  {(
+                    Object.keys(ColorFormatLabels) as Array<
+                      keyof typeof ColorFormatLabels
+                    >
+                  ).map((format) => (
+                    <Button
+                      key={format}
+                      className={`rounded-lg px-4 py-2 font-semibold transition-colors ${
+                        selectedColorFormat === format
+                          ? "bg-blue-500 text-gray-100 hover:bg-blue-500 dark:bg-blue-700"
+                          : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-900"
+                      }`}
+                      onClick={() => setSelectedColorFormat(format)}
+                    >
+                      {ColorFormatLabels[format]}
+                    </Button>
+                  ))}
+                </div>
               </div>
             </nav>
-            <Separator orientation="vertical" className="mx-4" />
-            <main className="w-[70%] overflow-auto">
+            <Separator orientation="vertical" className="hidden md:block" />
+            <Separator orientation="horizontal" className="block md:hidden" />
+            <main className="w-full overflow-auto md:w-[70%]">
               <div className="relative">
                 <Button
                   className="absolute top-2 right-2 bg-gray-800 text-gray-100 hover:bg-gray-800/95"
@@ -121,13 +127,13 @@ export default function ExportModal() {
                   variant="default"
                   onClick={() =>
                     copyToClipboard(
-                      exportFormats[selectedStylingTool][selectedColorFormat]
+                      exportFormats[selectedStylingTool][selectedColorFormat],
                     )
                   }
                 >
                   <Copy /> {copied ? "Copiado" : "Copiar"}
                 </Button>
-                <pre className="bg-gray-100 p-6 rounded-lg overflow-x-auto text-sm dark:bg-gray-900 dark:text-gray-100">
+                <pre className="overflow-x-auto rounded-lg bg-gray-100 p-6 text-sm dark:bg-gray-900 dark:text-gray-100">
                   {exportFormats[selectedStylingTool][selectedColorFormat]}
                 </pre>
               </div>
