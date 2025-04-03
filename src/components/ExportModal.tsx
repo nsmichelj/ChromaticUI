@@ -69,8 +69,8 @@ export default function ExportModal() {
             </DialogDescription>
           </DialogHeader>
 
-          <div className="flex h-full">
-            <nav className="w-[30%] flex flex-row gap-4">
+          <div className="flex flex-wrap md:flex-nowrap h-full">
+          <nav className="w-[30%] md:w-[30%] w-full flex flex-row gap-4 justify-center md:justify-start">
               <div className="flex flex-col gap-2">
                 <span className="font-bold">Estilo</span>
                 {(
@@ -110,10 +110,22 @@ export default function ExportModal() {
                     {ColorFormatLabes[format]}
                   </Button>
                 ))}
-              </div>
-            </nav>
-            <Separator orientation="vertical" className="mx-4" />
-            <main className="w-[70%] overflow-auto">
+            </div>
+          </nav>
+
+          {/* VERTICAL divider (displayed on large screens) */}
+          <Separator 
+            orientation="vertical" 
+            className="mx-4 hidden md:block" 
+          />
+          
+          {/* HORIZONTAL divider (displayed on small screens) */}
+          <Separator 
+            orientation="horizontal" 
+            className="mx-4 md:hidden w-full my-4" 
+          />
+
+          <main className="w-full md:w-[70%] overflow-auto flex justify-center">
               <div className="relative">
                 <Button
                   className="absolute top-2 right-2 bg-gray-800 text-gray-100 hover:bg-gray-800/95"
