@@ -16,14 +16,14 @@ import { getExportFormats } from "@/utils/generateFormats";
 import { Separator } from "@/components/ui/separator";
 import type { StylingTool, ColorFormat } from "@/types/styleFormats";
 
-const StylingToolLabes: Record<StylingTool, string> = {
+const StylingToolLabels: Record<StylingTool, string> = {
   tailwind4: "Tailwind 4",
   tailwind3: "Tailwind 3",
   css: "CSS",
   scss: "SCSS",
 };
 
-const ColorFormatLabes: Record<ColorFormat, string> = {
+const ColorFormatLabels: Record<ColorFormat, string> = {
   hex: "HEX",
   rgb: "RGB",
   hsl: "HSL",
@@ -74,8 +74,8 @@ export default function ExportModal() {
               <div className="flex flex-col gap-2">
                 <span className="font-bold">Estilo</span>
                 {(
-                  Object.keys(StylingToolLabes) as Array<
-                    keyof typeof StylingToolLabes
+                  Object.keys(StylingToolLabels) as Array<
+                    keyof typeof StylingToolLabels
                   >
                 ).map((format) => (
                   <Button
@@ -87,15 +87,15 @@ export default function ExportModal() {
                     }`}
                     onClick={() => setSelectedStylingTool(format)}
                   >
-                    {StylingToolLabes[format]}
+                    {StylingToolLabels[format]}
                   </Button>
                 ))}
               </div>
               <div className="flex flex-col gap-2">
                 <span className="font-bold">Formato</span>
                 {(
-                  Object.keys(ColorFormatLabes) as Array<
-                    keyof typeof ColorFormatLabes
+                  Object.keys(ColorFormatLabels) as Array<
+                    keyof typeof ColorFormatLabels
                   >
                 ).map((format) => (
                   <Button
@@ -107,7 +107,7 @@ export default function ExportModal() {
                     }`}
                     onClick={() => setSelectedColorFormat(format)}
                   >
-                    {ColorFormatLabes[format]}
+                    {ColorFormatLabels[format]}
                   </Button>
                 ))}
               </div>
