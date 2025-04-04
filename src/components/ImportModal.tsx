@@ -127,7 +127,7 @@ export default function ExportModal() {
               </div>
 
               <TooltipProvider>
-                <div className="flex justify-center gap-4">
+                <div className="flex flex-wrap justify-center gap-4">
                   {palette.map((color, index) => (
                     <Tooltip delayDuration={150} key={index}>
                       <TooltipTrigger>
