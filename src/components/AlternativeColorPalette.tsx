@@ -13,21 +13,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { $color, $savedColors, saveColor } from "@/stores/color";
+import type { HarmonyOption, HarmonyType } from "@/types/harmonyTypes";
+import { generateHarmonyPalette } from "@/utils/colorHarmony";
 
-type HarmonyType =
-  | "auto"
-  | "analogous"
-  | "complementary"
-  | "triadic"
-  | "tetradic"
-  | "square"
-  | "split-complementary";
-
-const harmonyOptions: {
-  value: HarmonyType;
-  label: string;
-  minColors?: number;
-}[] = [
+const harmonyOptions: HarmonyOption[] = [
   { value: "auto", label: "Auto" },
   { value: "analogous", label: "Análogo", minColors: 3 },
   { value: "complementary", label: "Complementario" },
@@ -53,7 +42,7 @@ export default function AlternativeColorPalette() {
   const menuRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
   useEffect(() => {
-    generateHarmonyPalette();
+    generatePalette();
   }, [numberColors, schema, color]);
 
   useEffect(() => {
@@ -101,111 +90,10 @@ export default function AlternativeColorPalette() {
     }
   };
 
-  const generateHarmonyPalette = () => {
+  const generatePalette = () => {
     if (!chroma.valid(color)) return;
-    const [h, s, l] = chroma(color).hsl();
-    let newPalette: string[] = [];
-
-    switch (schema) {
-      case "auto":
-        const stepHSL = 360 / numberColors;
-        for (let i = 0; i < numberColors; i++) {
-          const newH = (h + stepHSL * i) % 360;
-          newPalette.push(chroma.hsl(newH, s, l).hex());
-        }
-        break;
-      case "analogous":
-        const range = 60;
-        const stepAnalogous = range / (numberColors - 1);
-        for (let i = 0; i < numberColors; i++) {
-          const newH = (h - range / 2 + stepAnalogous * i + 360) % 360;
-          newPalette.push(chroma.hsl(newH, s, l).hex());
-        }
-        break;
-      case "complementary":
-        const stepComplementary = 180 / (numberColors - 1);
-        for (let i = 0; i < numberColors; i++) {
-          const newH = (h + stepComplementary * i) % 360;
-          newPalette.push(chroma.hsl(newH, s, l).hex());
-        }
-        break;
-      case "triadic":
-        const stepTriadic = 120 / (numberColors - 1);
-        for (let i = 0; i < numberColors; i++) {
-          const newH = (h + stepTriadic * i) % 360;
-          newPalette.push(chroma.hsl(newH, s, l).hex());
-        }
-        break;
-      case "tetradic":
-        const tetraHues = [
-          h % 360,
-          (h + 45) % 360,
-          (h + 180) % 360,
-          (h + 225) % 360,
-        ];
-
-        newPalette = tetraHues.map((hue) => chroma.hsl(hue, s, l).hex());
-        if (numberColors > 4) {
-          const sVariations = [s * 0.8, s * 1.2];
-          const lVariations = [l * 0.8, l * 1.2];
-
-          for (let i = 4; i < numberColors; i++) {
-            const hueIndex = i % 4;
-            const sIndex = Math.floor((i - 4) / 2) % sVariations.length;
-            const lIndex = Math.floor((i - 4) / 3) % lVariations.length;
-            newPalette.push(
-              chroma
-                .hsl(
-                  tetraHues[hueIndex],
-                  sVariations[sIndex],
-                  lVariations[lIndex],
-                )
-                .hex(),
-            );
-          }
-        }
-        break;
-      case "square":
-        const squareHue = [
-          h % 360,
-          (h + 90) % 360,
-          (h + 180) % 360,
-          (h + 270) % 360,
-        ];
-        newPalette = squareHue.map((hue) => chroma.hsl(hue, s, l).hex());
-
-        if (numberColors > 4) {
-          const sVariations = [s * 0.7, s * 1.3];
-          const lVariations = [l * 0.7, l * 1.3];
-
-          for (let i = 4; i < numberColors; i++) {
-            const hueIndex = i % 4;
-            const sIndex = Math.floor((i - 4) / 4) % sVariations.length;
-            const lIndex = Math.floor((i - 4) / 2) % lVariations.length;
-            newPalette.push(
-              chroma
-                .hsl(
-                  squareHue[hueIndex],
-                  sVariations[sIndex],
-                  lVariations[lIndex],
-                )
-                .hex(),
-            );
-          }
-        }
-        break;
-      case "split-complementary":
-        const complementHue = (h + 180) % 360;
-        newPalette.push(chroma.hsl(h, s, l).hex());
-        for (let i = 1; i < numberColors; i++) {
-          const offset = i % 2 === 0 ? 30 : -30;
-          const newH = (complementHue + offset * Math.ceil(i / 2)) % 360;
-          newPalette.push(chroma.hsl(newH, s, l).hex());
-        }
-        break;
-    }
-
-    setHarmonyPalette(newPalette);
+    const palette = generateHarmonyPalette(color, numberColors, schema);
+    setHarmonyPalette(palette);
   };
 
   const handleSaveColor = (selectedColor: string) => {
