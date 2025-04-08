@@ -23,10 +23,13 @@ export default function EditModal() {
     color,
     index: palette.indexOf(color),
   });
-  const [colorConfig, setColorConfig] = useState({
-    hue: chroma(color).hsl()[0],
-    saturation: chroma(color).hsl()[1] * 100,
-    lightness: chroma(color).hsl()[2] * 100,
+  const [colorConfig, setColorConfig] = useState(() => {
+    if (!chroma.valid(color)) return { hue: 0, saturation: 0, lightness: 0 };
+    return {
+      hue: chroma(color).hsl()[0],
+      saturation: chroma(color).hsl()[1] * 100,
+      lightness: chroma(color).hsl()[2] * 100,
+    }
   });
 
   useEffect(() => {
