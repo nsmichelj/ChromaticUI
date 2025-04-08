@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
 import { useStore } from "@nanostores/react";
-import { toast } from "sonner";
 import chroma from "chroma-js";
+import { Copy, FolderUp } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
 
 import { Input } from "@/components/ui/input";
-import { $color } from "@/stores/color";
-
 import {
   Select,
   SelectContent,
@@ -13,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { $color, $savedColors, saveColor } from "@/stores/color";
 
 type HarmonyType =
   | "auto"
@@ -42,16 +42,33 @@ const harmonyOptions: {
 ];
 
 export default function AlternativeColorPalette() {
+  const savedColors = useStore($savedColors);
   const color = useStore($color);
 
   const [schema, setSchema] = useState<HarmonyType>("auto");
   const [numberColors, setNumberColors] = useState(5);
   const [minColors, setMinColors] = useState(2);
   const [harmonyPalette, setHarmonyPalette] = useState<string[]>([]);
+  const [activeCubeId, setActiveCubeId] = useState<number | null>(null);
+  const menuRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
   useEffect(() => {
     generateHarmonyPalette();
   }, [numberColors, schema, color]);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (activeCubeId !== null) {
+        const activeMenu = menuRefs.current.get(activeCubeId);
+        if (activeMenu && !activeMenu.contains(event.target as Node)) {
+          setActiveCubeId(null);
+        }
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [activeCubeId]);
 
   const handleCopyColor = (color: string) => {
     navigator.clipboard.writeText(color);
@@ -191,6 +208,24 @@ export default function AlternativeColorPalette() {
     setHarmonyPalette(newPalette);
   };
 
+  const handleSaveColor = (selectedColor: string) => {
+    if (!savedColors.includes(color)) {
+      saveColor(color);
+    }
+
+    if (!savedColors.includes(selectedColor)) {
+      saveColor(selectedColor);
+    }
+  };
+
+  const handleCubeClick = (id: number) => {
+    setActiveCubeId(activeCubeId === id ? null : id);
+  };
+
+  const handleMenuClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -227,17 +262,56 @@ export default function AlternativeColorPalette() {
           </Select>
         </div>
       </div>
+
       {harmonyPalette.length > 0 && (
         <div className="my-6 mb-6 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-10">
-          {harmonyPalette.map((color, index) => (
-            <div key={index} className="cursor-pointer space-y-1">
+          {harmonyPalette.map((variation, index) => (
+            <div key={index} className="group relative">
               <div
-                className={`group relative flex h-12 w-full items-center justify-center rounded-lg shadow-xs md:h-20`}
-                style={{ backgroundColor: color }}
-                onClick={() => handleCopyColor(color)}
-              ></div>
-              <div className="text-center text-sm font-bold text-gray-500">
-                {color.toUpperCase()}
+                style={{ backgroundColor: variation }}
+                className={`relative flex h-12 w-full cursor-pointer items-center justify-center space-y-1 rounded-lg shadow-xs md:h-20`}
+                onClick={() => handleCubeClick(index)}
+              >
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span
+                    className={`font-semibold ${
+                      chroma(variation).luminance() > 0.5
+                        ? "text-gray-800"
+                        : "text-gray-100"
+                    }`}
+                  >
+                    {variation}
+                  </span>
+                </div>
+              </div>
+
+              <div
+                ref={(el) => {
+                  if (el) menuRefs.current.set(index, el);
+                  else menuRefs.current.delete(index);
+                }}
+                onClick={handleMenuClick}
+                className={`absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-black/75 shadow-lg backdrop-blur-sm transition-all duration-300 ${
+                  activeCubeId === index
+                    ? "scale-100 opacity-100"
+                    : "pointer-events-none scale-50 opacity-0"
+                }`}
+              >
+                <div className="flex items-center gap-1 px-2 py-1">
+                  <button
+                    className="rounded-full p-1 transition-colors hover:bg-white/15"
+                    onClick={() => handleCopyColor(variation)}
+                  >
+                    <Copy className="h-4 w-4 text-white" />
+                  </button>
+
+                  <button
+                    className="rounded-full p-1 transition-colors hover:bg-white/15"
+                    onClick={() => handleSaveColor(variation)}
+                  >
+                    <FolderUp className="h-4 w-4 text-white" />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
