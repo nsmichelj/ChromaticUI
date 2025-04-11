@@ -1,6 +1,3 @@
-"use client"
-
-
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,7 +6,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger
 } from "@/components/ui/navigation-menu";
-import { Palette } from "lucide-react";
+import { Blend, Palette } from "lucide-react";
 
 
 export default function Navigation() {
@@ -24,6 +21,11 @@ export default function Navigation() {
             <NavigationMenuLink href="/converter">
               <span className="flex items-center justify-start gap-2">
                 <Palette /> Convertidor
+              </span>
+            </NavigationMenuLink>
+            <NavigationMenuLink href="/mixer">
+              <span className="flex items-center justify-start gap-2">
+                <Blend /> Mezclador
               </span>
             </NavigationMenuLink>
           </NavigationMenuContent>
