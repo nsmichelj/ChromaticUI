@@ -6,7 +6,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger
 } from "@/components/ui/navigation-menu";
-import { Blend, Palette } from "lucide-react";
+import { Blend, Contrast, Palette } from "lucide-react";
 
 
 export default function Navigation() {
@@ -17,7 +17,7 @@ export default function Navigation() {
           <NavigationMenuTrigger className="font-bold">
             Herramientas
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="min-w-[200px]">
             <NavigationMenuLink href="/converter">
               <span className="flex items-center justify-start gap-2">
                 <Palette /> Convertidor
@@ -26,6 +26,11 @@ export default function Navigation() {
             <NavigationMenuLink href="/mixer">
               <span className="flex items-center justify-start gap-2">
                 <Blend /> Mezclador
+              </span>
+            </NavigationMenuLink>
+            <NavigationMenuLink href="/contrast-check">
+              <span className="flex items-center justify-start gap-2">
+                <Contrast /> Analizador de contraste
               </span>
             </NavigationMenuLink>
           </NavigationMenuContent>
