@@ -3,6 +3,7 @@ import { ModeToggle } from "@/components/ModeToggle";
 import { Toaster } from "@/components/ui/sonner";
 import "@/styles/globals.css";
 import NavigationMenu from "@/components/NavigationMenu";
+import { Heart } from "lucide-react";
 ---
 
 <!doctype html>
@@ -55,8 +56,33 @@ import NavigationMenu from "@/components/NavigationMenu";
       </div>
     </header>
 
-    <div class="pt-[68px]">
-      <slot />
+    <div class="pt-[68px] h-full flex flex-col">
+      <div class="flex-1">
+        <slot />
+      </div>
+      <footer
+        class="w-full border-t bg-gray-50 border-gray-200 dark:bg-gray-900 dark:border-gray-800 mt-10"
+      >
+        <div
+          class="flex items-center justify-center w-full max-w-7xl m-auto px-2 pt-4 pb-8"
+        >
+          <p
+            class="text-md font-bold text-muted-foreground flex items-center gap-1"
+          >
+            <span>
+              Creado por <a
+                href="https://x.com/NSMichelJ"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="underline"
+              >
+                Michelito
+              </a>
+            </span>
+            <Heart className="text-red-400" size={18} />
+          </p>
+        </div>
+      </footer>
     </div>
 
     <Toaster position="top-center" client:load />
