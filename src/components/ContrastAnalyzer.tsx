@@ -18,9 +18,15 @@ import "@/styles/ColorSelector.module.css";
 export default function ContrastAnalyzer() {
   const [backgroundColor, setBackgroundColor] = useState("#191919");
   const [foregroundColor, setForegroundColor] = useState("#cccccc");
-  const [contrastResult, setContrastResult] = useState(
-    contrastCheck(backgroundColor, foregroundColor)
-  );
+  const [contrastResult, setContrastResult] = useState({
+    ratio: 10.95,
+    compliance: {
+      aaSmall: true,
+      aaLarge: true,
+      aaaSmall: true,
+      aaaLarge: true,
+    },
+  });
 
   useEffect(() => {
     if (chroma.valid(backgroundColor) && chroma.valid(foregroundColor)) {
