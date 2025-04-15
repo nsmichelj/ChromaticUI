@@ -2,6 +2,7 @@ import chroma from "chroma-js";
 import { Check, CirclePlus, Copy, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import ColorPicker from "@/components/ColorPicker";
 import Slider from "@/components/Slider";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,8 +22,6 @@ import {
 } from "@/components/ui/select";
 import type { InterpolationMode } from "@/types/blendMode";
 import { blendColors } from "@/utils/colorMixer";
-
-import "@/styles/ColorSelector.module.css";
 
 export default function MixerColor() {
   const [colorPreview, setColorPreview] = useState("#000000");
@@ -258,12 +257,9 @@ function ColorBox({
       <div className="flex flex-col justify-between gap-2 items-center">
         <div className="flex justify-between items-center gap-2">
           <div>
-            <input
-              type="color"
-              title="color"
-              className="size-8 rounded-full appearance-none cursor-pointer border-4 border-gray-50 ring-1 ring-gray-200 overflow-hidden dark:border-gray-700 dark:ring-gray-800"
-              value={inputColor}
-              onChange={(e) => handleColor(e.target.value)}
+            <ColorPicker
+              color={inputColor}
+              onColorChange={(e) => handleColor(e.target.value)}
             />
           </div>
 

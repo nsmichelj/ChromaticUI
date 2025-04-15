@@ -2,6 +2,7 @@ import chroma from "chroma-js";
 import { Check, MoveHorizontal, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import ColorPicker from "@/components/ColorPicker";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,8 +13,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { contrastCheck } from "@/utils/contrastCheck";
-
-import "@/styles/ColorSelector.module.css";
 
 export default function ContrastAnalyzer() {
   const [backgroundColor, setBackgroundColor] = useState("#191919");
@@ -94,12 +93,9 @@ export default function ContrastAnalyzer() {
                 </label>
                 <div className="flex justify-between items-center gap-2">
                   <div>
-                    <input
-                      type="color"
-                      title="color"
-                      className="size-8 rounded-full appearance-none cursor-pointer border-4 border-gray-50 ring-1 ring-gray-200 overflow-hidden dark:border-gray-700 dark:ring-gray-800"
-                      value={backgroundColor}
-                      onChange={(e) =>
+                    <ColorPicker
+                      color={backgroundColor}
+                      onColorChange={(e) =>
                         handleChangeBackgroundColor(e.target.value)
                       }
                     />
@@ -138,12 +134,9 @@ export default function ContrastAnalyzer() {
 
                 <div className="flex justify-between items-center gap-2">
                   <div>
-                    <input
-                      type="color"
-                      title="color"
-                      className="size-8 rounded-full appearance-none cursor-pointer border-4 border-gray-50 ring-1 ring-gray-200 overflow-hidden dark:border-gray-700 dark:ring-gray-800"
-                      value={foregroundColor}
-                      onChange={(e) =>
+                    <ColorPicker
+                      color={foregroundColor}
+                      onColorChange={(e) =>
                         handleChangeForegroundColor(e.target.value)
                       }
                     />

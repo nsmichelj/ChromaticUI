@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
-import { Bookmark, BookmarkCheck, Copy, RotateCcw } from "lucide-react";
 import { useStore } from "@nanostores/react";
 import chroma from "chroma-js";
+import { Bookmark, BookmarkCheck, Copy, RotateCcw } from "lucide-react";
+import React, { useEffect } from "react";
 
-import { $color, $savedColors, saveColor, removeColor } from "@/stores/color";
-import { Input } from "@/components/ui/input";
+import ColorPicker from "@/components/ColorPicker";
 import { Button } from "@/components/ui/button";
-
-import "@/styles/ColorSelector.module.css";
+import { Input } from "@/components/ui/input";
+import { $color, $savedColors, removeColor, saveColor } from "@/stores/color";
 
 export default function ColorSelector() {
   const savedColors = useStore($savedColors);
@@ -41,13 +40,7 @@ export default function ColorSelector() {
     <div>
       <div className="flex justify-between gap-2 items-center my-8">
         <div>
-          <input
-            type="color"
-            title="color"
-            className="size-8 rounded-full appearance-none cursor-pointer border-4 border-gray-50 ring-1 ring-gray-200 overflow-hidden dark:border-gray-700 dark:ring-gray-800"
-            value={color}
-            onChange={handleSetColor}
-          />
+          <ColorPicker color={color} onColorChange={handleSetColor} />
         </div>
 
         <Input
