@@ -231,6 +231,7 @@ function ColorBox({
   };
 
   const handleMix = (number: number) => {
+    if(number > 100) return
     onChange(color, number);
   };
 
