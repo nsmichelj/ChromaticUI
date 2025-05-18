@@ -27,5 +27,5 @@ export function generatePalette(color: string) {
     return chroma(h, s, newLightness / 100, "hsl").hex();
   });
 
-  return [...lighterShades, color, ...darkerShades];
+  return [...lighterShades, chroma(color).hex(), ...darkerShades];
 }

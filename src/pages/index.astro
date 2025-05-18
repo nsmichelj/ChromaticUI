@@ -1,12 +1,13 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import ColorSelector from "@/components/ColorSelector";
-import ExportModal from "@/components/ExportModal";
+import AlternativeColorPalette from "@/components/AlternativeColorPalette";
 import ColorPalette from "@/components/ColorPalette";
+import ColorSelector from "@/components/ColorSelector";
+import EditModal from "@/components/EditModal";
+import ExportModal from "@/components/ExportModal";
+import FormatSelector from "@/components/FormatSelector";
 import ImportModal from "@/components/ImportModal";
 import SavedColors from "@/components/SavedColors";
-import EditModal from "@/components/EditModal";
-import AlternativeColorPalette from "@/components/AlternativeColorPalette";
+import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout>
@@ -27,10 +28,13 @@ import AlternativeColorPalette from "@/components/AlternativeColorPalette";
     </div>
     <div class="mx-auto w-full max-w-5xl px-6">
       <SavedColors client:only="react" />
-      <div class="flex justify-end gap-1">
-        <ExportModal client:load />
-        <ImportModal client:load />
-        <EditModal client:load />
+      <div class="flex justify-between gap-1 items-end">
+        <FormatSelector client:load />
+        <div class="flex flex-row justify-between gap-1 items-center">
+          <ExportModal client:load />
+          <ImportModal client:load />
+          <EditModal client:load />
+        </div>
       </div>
       <ColorPalette client:load />
     </div>

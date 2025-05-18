@@ -1,14 +1,14 @@
-import { useEffect } from "react";
-import { Check } from "lucide-react";
 import { useStore } from "@nanostores/react";
-import { toast } from "sonner";
 import chroma from "chroma-js";
+import { Check } from "lucide-react";
+import { useEffect } from "react";
+import { toast } from "sonner";
 
-
-import { $color, $palette } from "@/stores/color";
+import { $color, $palette, $selectedColorFormat } from "@/stores/color";
 import { generatePalette } from "@/utils/generatePalette";
 
 export default function ColorPalette() {
+  const selectedColorFormat = useStore($selectedColorFormat);
   const color = useStore($color);
   const palette = useStore($palette);
 
@@ -18,18 +18,29 @@ export default function ColorPalette() {
   }, [color]);
 
   const handleCopyColor = (color: string) => {
-    navigator.clipboard.writeText(color);
-    toast((
-        <div className="flex items-center">
-          <div
-            className="size-6 rounded-full inline-flex items-center justify-center shrink-0"
-            style={{ background: color }}
-          />
-          <div className="ms-3 text-sm font-normal">
-            Color {color} copiado al portapapeles
-          </div>
+    const getFormattedColor = () => {
+      switch (selectedColorFormat) {
+        case "hsl":
+        case "rgb":
+        case "oklch":
+          return chroma(color).css(selectedColorFormat);
+        default:
+          return color;
+      }
+    };
+    const formattedColor = getFormattedColor();
+
+    navigator.clipboard.writeText(formattedColor);
+    toast(
+      <div className="flex items-center">
+        <div
+          className="size-6 rounded-full inline-flex items-center justify-center shrink-0"
+          style={{ background: color }}
+        />
+        <div className="ms-3 text-sm font-normal">
+          Color {formattedColor} copiado al portapapeles
         </div>
-      ),
+      </div>,
       {
         duration: 2000,
       }
@@ -45,7 +56,7 @@ export default function ColorPalette() {
             style={{ backgroundColor: shade }}
             onClick={() => handleCopyColor(shade)}
           >
-            {shade === color && (
+            {shade === chroma(color).hex() && (
               <Check
                 className={
                   chroma(shade).luminance() > 0.5
