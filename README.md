@@ -1,105 +1,98 @@
 # ChromaticUI 🎨
 
-**ChromaticUI** es un generador de paletas de colores personalizadas, convierte un color base en una paleta profesional con tonalidades claras y oscuras.
+**ChromaticUI** is a custom color palette generator that converts a base color into a professional palette with light and dark shades.
 
-## 🌟 Características Principales
+## 🌟 Main Features
 
-- **Generación Automática de Paletas**  
-  Introduce un color y genera una paleta con variantes claras y oscuras.
+- **Automatic Palette Generation**
+  Enter a color and generate a palette with light and dark variations.
 
-- **Guardado en LocalStorage**  
-  Guarda tus paletas favoritas directamente en el navegador para acceder a ellas en cualquier momento.
+- **LocalStorage Saving**
+  Save your favorite palettes directly in the browser to access them anytime.
 
-- **Edición en Tiempo Real**  
-  Ajusta manualmente cada tonalidad de la paleta mediante sliders de matiz, saturación y luminosidad.
+- **Real-Time Editing**
+  Manually adjust each shade of the palette using hue, saturation, and lightness sliders.
 
-- **Extracción de Colores desde Imágenes**  
-  Sube una imagen y obtén una paleta inspirada en sus colores dominantes.
+- **Color Extraction from Images**
+  Upload an image and get a palette inspired by its dominant colors.
 
-- **Exportación Multiformato**  
-  Copia tus paletas en formatos como **CSS, SCSS, Tailwind 3 y 4** en **HEX, RGB, HSL u OKCHL**.
+- **Multi-Format Export**
+  Copy your palettes in formats like CSS, SCSS, Tailwind 3 and 4 in HEX, RGB, HSL or OKCHL.
 
-## 🛠️ Tecnologías Utilizadas
+## 🛠️ Technologies Used
 
 - **Astro**
 - **React**
 - **Tailwind CSS**
-- **Shadshadcn/ui**
+- **Shadcn/ui**
 
-## 🚀 Instalación y Uso
+## 🚀 Installation and Usage
 
-1. Clona el repositorio
+1. Clone the repository
 
 ```bash
 git clone https://github.com/tu-usuario/ChromaticUI.git
 cd ChromaticUI
 ```
 
-2. Instala dependencias
+2. Install dependencies
 
 ```bash
 pnpm i
 ```
 
-3. Inicia el servidor de desarrollo
+3. Start the development server
 
 ```bash
 pnpm dev
 ```
 
-4. Accede a la app
+4. Access the app
 
 ```bash
 http://localhost:4321
 ```
 
-## 🤝 Contribuir
+## 🤝 Contribute
 
-¡ChromaticUI es open source y tu ayuda es bienvenida! 🙌
+ChromaticUI is open source and your help is welcome! 🙌
 
-### ¿Cómo contribuir?
+### How to contribute?
 
-### Sugerencias, mejoras y reportes de errores
+### Suggestions, improvements, and bug reports
 
-- ¿Encontraste un bug? ¿Tienes una idea? ¡compártelas!
-- Puedes hacer un [fork](https://github.com/NSMichelJ/ChromaticUI/fork) del repositorio y enviar una [pull requests](https://github.com/NSMichelJ/ChromaticUI/pulls) con tus cambios.
-- También puedes abrir un [issue](https://github.com/NSMichelJ/ChromaticUI/issues) en el repositorio, etiquetándolo como `enhancement`, para discutir tus ideas, o `bug` si encuentras algún error o comportamiento inesperado.
+- Found a bug? Have an idea? Share them!
+- You can [fork](https://github.com/nsmichelj/ChromaticUI/fork) the repository and send [pull requests](https://github.com/nsmichelj/ChromaticUI/pulls) with your changes.
+- You can also open an [issue](https://github.com/nsmichelj/ChromaticUI/issues) in the repository, labeling it as `enhancement` to discuss your ideas, or `bug` if you find any errors or unexpected behavior.
 
-### Guía rápida para contribuir
+### Quick guide to contributing
 
-### Guía Rápida:
-
-1. Haz un [fork](https://github.com/NSMichelJ/ChromaticUI/fork) del proyecto.
-2. Clona tu fork:
+1. [fork](https://github.com/nsmichelj/ChromaticUI/fork) the project.
+2. Clone your fork:
 
 ```bash
 git clone <URL del fork>
 ```
 
-3. Añade el repositorio original como remoto:
+3. Add the original repository as a remote:
 
 ```bash
 git remote add upstream <URL del repositorio original>
 ```
 
-4. Crea una rama:
+4. Create a branch:
 
 ```bash
 git switch -c feature/tu-mejora
 ```
 
-5. Desarrolla y prueba tus cambios.
-6. Commit y push:
+5. Develop and test your changes.
+6. Commit and push:
 
-```bash
-git commit -m "Add descripción de tu cambio"
-git push origin feature/tu-mejora
-```
+7. Open a [PR](https://github.com/nsmichelj/ChromaticUI/pulls) on GitHub 🎉
 
-7. Abre una [PR](https://github.com/NSMichelJ/ChromaticUI/pulls) en GitHub 🎉
+> **📚 For more details and best practices, check the [contribution guide](https://github.com/nsmichelj/ChromaticUI/blob/main/CONTRIBUTING.md). There you'll find detailed instructions on how to set up your environment, structure your commits, and ensure your changes follow the project standards.**
 
-> **📚 Para más detalles y buenas prácticas, consulta la [guía de contribución](https://github.com/NSMichelJ/ChromaticUI/blob/main/CONTRIBUTING.md). Allí encontrarás instrucciones detalladas sobre cómo configurar tu entorno, estructurar tus commits y asegurar que tus cambios sigan los estándares del proyecto.**
+## 📜 License
 
-## 📜 Licencia
-
-Este proyecto está bajo la **Licencia MIT** - Ver [LICENSE](https://github.com/NSMichelJ/ChromaticUI/blob/main/LICENSE) para más detalles.
+This project is under the **MIT License** - See [LICENSE](https://github.com/nsmichelj/ChromaticUI/blob/main/LICENSE)  for more details.
