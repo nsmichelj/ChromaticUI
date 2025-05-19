@@ -29,7 +29,7 @@ export default function EditModal() {
       hue: chroma(color).hsl()[0],
       saturation: chroma(color).hsl()[1] * 100,
       lightness: chroma(color).hsl()[2] * 100,
-    }
+    };
   });
 
   useEffect(() => {
@@ -74,23 +74,23 @@ export default function EditModal() {
     $palette.set(newPalette);
   };
 
-    const handleCopyColor = (color: string) => {
-      navigator.clipboard.writeText(color);
-      toast(
-        <div className="flex items-center">
-          <div
-            className="size-6 rounded-full inline-flex"
-            style={{ background: color }}
-          />
-          <div className="ms-3 text-sm font-normal">
-            Color {color} copiado al portapapeles
-          </div>
-        </div>,
-        {
-          duration: 2000,
-        }
-      );
-    };
+  const handleCopyColor = (color: string) => {
+    navigator.clipboard.writeText(color);
+    toast(
+      <div className="flex items-center">
+        <div
+          className="size-6 rounded-full inline-flex"
+          style={{ background: color }}
+        />
+        <div className="ms-3 text-sm font-normal">
+          Color {color} copied to clipboard
+        </div>
+      </div>,
+      {
+        duration: 2000,
+      }
+    );
+  };
 
   const getSliderBackground = (type: "lightness" | "saturation" | "hue") => {
     switch (type) {
@@ -119,15 +119,15 @@ export default function EditModal() {
             variant="outline"
             className="px-4 py-2 rounded-lg font-semibold dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
           >
-            Editar
+            Edit
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[700px] w-[700px]">
           <DialogHeader>
-            <DialogTitle>Ajusta la paleta de colores</DialogTitle>
+            <DialogTitle>Adjust your color palette</DialogTitle>
             <DialogDescription>
-              Personaliza y perfecciona los colores de tu diseño utilizando el
-              código HSL (Tono, Saturación, Luminosidad)
+              Customize and refine your design's colors using HSL (Hue,
+              Saturation, Lightness) values.
             </DialogDescription>
           </DialogHeader>
 
@@ -205,7 +205,7 @@ export default function EditModal() {
             size="default"
             variant="outline"
           >
-            Ajustar
+            Apply
           </Button>
         </DialogContent>
       </Dialog>

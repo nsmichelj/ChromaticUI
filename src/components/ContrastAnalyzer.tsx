@@ -51,10 +51,9 @@ export default function ContrastAnalyzer() {
     <div className="mt-10">
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
-          <CardTitle>Analizador de contraste</CardTitle>
+          <CardTitle>Contrast Analyzer</CardTitle>
           <CardDescription>
-            Evalúa la accesibilidad de tus combinaciones de colores según los
-            estándares WCAG (Web Content Accessibility Guidelines)
+            Evaluate the accessibility of your color combinations according to WCAG (Web Content Accessibility Guidelines) standards
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -62,22 +61,22 @@ export default function ContrastAnalyzer() {
             <div
               className="w-full rounded-lg border p-4"
               style={{ backgroundColor: backgroundColor }}
-              aria-label="Vista previa del color"
+              aria-label="Color preview"
             >
               <p className="my-4 text-lg" style={{ color: foregroundColor }}>
-                Ejemplo de texto normal (16px)
+                Normal text example (16px)
               </p>
 
               <p
                 className="my-4 text-3xl font-bold"
                 style={{ color: foregroundColor }}
               >
-                Ejemplo de texto grande (24px)
+                Large text example (24px)
               </p>
             </div>
 
             <p className="text-lg text-gray-800 dark:text-gray-100">
-              Proporción de contraste:{" "}
+              Contrast ratio:{" "}
               <span className="font-bold">{contrastResult.ratio}:1</span>
             </p>
 
@@ -89,7 +88,7 @@ export default function ContrastAnalyzer() {
                   htmlFor="backgroundColor"
                   className="block text-sm font-medium text-gray-900 dark:text-white mb-2"
                 >
-                  Color de fondo
+                  Background color
                 </label>
                 <div className="flex justify-between items-center gap-2">
                   <div>
@@ -107,7 +106,7 @@ export default function ContrastAnalyzer() {
                     onChange={(e) =>
                       handleChangeBackgroundColor(e.target.value)
                     }
-                    placeholder="Introduce un color (ej: #ff0000, rgb(255 0 0), red)"
+                    placeholder="Enter a color (e.g., #ff0000, rgb(255 0 0), red)"
                     className="text-gray-600 text-base md:text-base rounded-lg p-2.5 bg-gray-50 font-semibold dark:bg-gray-800 dark:text-gray-50 border-gray-400 focus-visible:ring-1"
                   />
                 </div>
@@ -129,7 +128,7 @@ export default function ContrastAnalyzer() {
                   htmlFor="foregroundColor"
                   className="block text-sm font-medium text-gray-900 dark:text-white mb-2"
                 >
-                  Color de texto
+                  Text color
                 </label>
 
                 <div className="flex justify-between items-center gap-2">
@@ -148,7 +147,7 @@ export default function ContrastAnalyzer() {
                     onChange={(e) =>
                       handleChangeForegroundColor(e.target.value)
                     }
-                    placeholder="Introduce un color (ej: #ff0000, rgb(255 0 0), red)"
+                    placeholder="Enter a color (e.g., #ff0000, rgb(255 0 0), red)"
                     className="text-gray-600 text-base md:text-base rounded-lg p-2.5 bg-gray-50 font-semibold dark:bg-gray-800 dark:text-gray-50 border-gray-400 focus-visible:ring-1"
                   />
                 </div>
@@ -199,19 +198,16 @@ function ComplianceResult({ compliance }: { compliance: Compliance }) {
     <div className="">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <ComplianceCheck
-          label="AA Texto Normal"
+          label="AA Normal Text"
           compliant={compliance.aaSmall}
         />
+        <ComplianceCheck label="AA Large Text" compliant={compliance.aaLarge} />
         <ComplianceCheck
-          label="AA Texto Grande"
-          compliant={compliance.aaLarge}
-        />
-        <ComplianceCheck
-          label="AAA Texto Normal"
+          label="AAA Normal Text"
           compliant={compliance.aaaSmall}
         />
         <ComplianceCheck
-          label="AAA Texto Grande"
+          label="AAA Large Text"
           compliant={compliance.aaaLarge}
         />
       </div>

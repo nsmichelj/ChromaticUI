@@ -57,22 +57,22 @@ export default function ExportModal() {
             variant="outline"
             className="rounded-lg px-4 py-2 font-semibold dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
           >
-            Exportar
+            Export
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[750px]">
           <DialogHeader>
-            <DialogTitle>Exportar paleta de colores</DialogTitle>
+            <DialogTitle>Export Color Palette</DialogTitle>
             <DialogDescription>
-              Exporta tu paleta de colores en formato CSS, Tailwind CSS o SCSS.
-              Selecciona el formato deseado y copia el código.
+              Export your color palette in CSS, Tailwind CSS, or SCSS format.
+              Select the desired format and copy the code.
             </DialogDescription>
           </DialogHeader>
 
           <div className="grid gap-4 md:flex md:flex-row">
             <nav className="flex w-full md:w-[30%] flex-col gap-4 md:flex-row">
               <div className="w-full">
-                <span className="font-bold">Estilo</span>
+                <span className="font-bold">Style</span>
                 <div className="flex w-full flex-row flex-wrap gap-2 md:flex-col">
                   {(
                     Object.keys(StylingToolLabels) as Array<
@@ -95,7 +95,7 @@ export default function ExportModal() {
               </div>
 
               <div className="w-full">
-                <span className="font-bold">Formato</span>
+                <span className="font-bold">Format</span>
                 <div className="flex w-full flex-row flex-wrap gap-2 md:flex-col">
                   {(
                     Object.keys(ColorFormatLabels) as Array<
@@ -127,11 +127,11 @@ export default function ExportModal() {
                   variant="default"
                   onClick={() =>
                     copyToClipboard(
-                      exportFormats[selectedStylingTool][selectedColorFormat],
+                      exportFormats[selectedStylingTool][selectedColorFormat]
                     )
                   }
                 >
-                  <Copy /> {copied ? "Copiado" : "Copiar"}
+                  <Copy /> {copied ? "Copied" : "Copy"}
                 </Button>
                 <pre className="overflow-x-auto rounded-lg bg-gray-100 p-6 text-sm dark:bg-gray-900 dark:text-gray-100">
                   {exportFormats[selectedStylingTool][selectedColorFormat]}

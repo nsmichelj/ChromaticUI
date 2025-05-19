@@ -1,11 +1,13 @@
-import { useCallback, useState } from "react";
-import { useDropzone } from "react-dropzone-esm";
-import { Palette, Undo2, Upload } from "lucide-react";
-import { toast } from "sonner";
 import chroma from "chroma-js";
 import ColorThief from "colorthief";
+import { Palette, Undo2, Upload } from "lucide-react";
+import { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone-esm";
+import { toast } from "sonner";
 
-import { saveColor } from "@/stores/color";
+import ColorSample from "@/components/ColorSample";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
@@ -14,15 +16,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import ColorSample from "@/components/ColorSample";
+import { saveColor } from "@/stores/color";
 
 export default function ExportModal() {
   const [imagePreview, setImagePreview] = useState<string>("");
@@ -69,7 +69,7 @@ export default function ExportModal() {
           style={{ background: color }}
         />
         <div className="ms-3 text-sm font-normal">
-          Color {color} copiado al portapapeles
+          Color {color} copied to clipboard.
         </div>
       </div>,
       {
@@ -86,7 +86,7 @@ export default function ExportModal() {
       <div className="flex items-center">
         <Palette className="size-6" />
         <div className="ms-3 text-sm font-normal">
-          Paleta de colores importada correctamente
+          Color palette imported successfully.
         </div>
       </div>,
       {
@@ -103,15 +103,14 @@ export default function ExportModal() {
             variant="outline"
             className="px-4 py-2 rounded-lg font-semibold dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
           >
-            Importar
+            Import
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[700px] w-[700px]">
           <DialogHeader>
-            <DialogTitle>Importar paleta de colores</DialogTitle>
+            <DialogTitle>Import Color Palette</DialogTitle>
             <DialogDescription>
-              Selecciona una imagen desde tu dispositivo para extraer su paleta
-              de colores.
+              Select an image from your device to extract its color palette.
             </DialogDescription>
           </DialogHeader>
 
@@ -149,7 +148,7 @@ export default function ExportModal() {
                 onClick={handleImport}
                 variant="outline"
               >
-                Importar paleta
+                Import Palette
               </Button>
 
               <Button
@@ -177,17 +176,17 @@ export default function ExportModal() {
                 <div>
                   {isDragActive ? (
                     <p className="text-lg font-medium">
-                      Suelta tu imagen aquí...
+                      Drop your image here...
                     </p>
                   ) : (
                     <p className="text-lg font-medium">
-                      Arrastre y suelte su imagen aquí...
+                      Drag and drop your image here...
                     </p>
                   )}
                 </div>
 
                 <Button variant="secondary" className="text-lg font-medium">
-                  O clic para seleccionar una
+                  Or click to select one
                 </Button>
               </div>
             </Card>

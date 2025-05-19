@@ -38,7 +38,7 @@ export default function ColorPalette() {
           style={{ background: color }}
         />
         <div className="ms-3 text-sm font-normal">
-          Color {formattedColor} copiado al portapapeles
+          Color {formattedColor} copied to clipboard
         </div>
       </div>,
       {

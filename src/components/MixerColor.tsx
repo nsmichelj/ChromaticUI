@@ -102,9 +102,9 @@ export default function MixerColor() {
     <div className="mt-10">
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
-          <CardTitle>Mezclador de Colores</CardTitle>
+          <CardTitle>Color Mixer</CardTitle>
           <CardDescription>
-            Mezcla colores con diferentes modos de interpolación
+            Mix colors using different interpolation modes
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -112,7 +112,7 @@ export default function MixerColor() {
             <div
               className="w-full rounded-lg border p-4 flex flex-col items-end gap-1"
               style={{ backgroundColor: colorPreview }}
-              aria-label="Vista previa del color"
+              aria-label="Color preview"
             >
               <ColorCopyArea
                 key="hex"
@@ -135,7 +135,7 @@ export default function MixerColor() {
 
             <div className="flex flex-col justify-start gap-2 sm:flex-row sm:items-center">
               <div className="text-sm font-semibold text-gray-500">
-                Modo de mezcla:
+                Blend Mode:
               </div>
               <Select onValueChange={handleBlendModeChange} defaultValue="rgb">
                 <SelectTrigger className="w-[240px] rounded-lg border-gray-400 bg-gray-50 p-2.5 text-gray-600 focus-visible:ring-1 md:text-base dark:bg-gray-800 dark:text-gray-50">
@@ -231,7 +231,7 @@ function ColorBox({
   };
 
   const handleMix = (number: number) => {
-    if(number > 100) return
+    if (number > 100) return;
     onChange(color, number);
   };
 

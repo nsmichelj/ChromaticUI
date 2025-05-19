@@ -20,7 +20,7 @@ export default function FormatSelector() {
 
   return (
     <div className="flex flex-col justify-start gap-2 sm:flex-row sm:items-center">
-      <div className="text-sm font-semibold text-gray-500">Copiar como:</div>
+      <div className="text-sm font-semibold text-gray-500">Copy as:</div>
       <Select
         onValueChange={handleSelectedColor}
         defaultValue="hex"

@@ -15,22 +15,22 @@ export default function Navigation() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="font-bold">
-            Herramientas
+            Tools
           </NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[200px]">
             <NavigationMenuLink href="/converter">
               <span className="flex items-center justify-start gap-2">
-                <Palette /> Convertidor
+                <Palette /> Converter
               </span>
             </NavigationMenuLink>
             <NavigationMenuLink href="/mixer">
               <span className="flex items-center justify-start gap-2">
-                <Blend /> Mezclador
+                <Blend /> Mixer
               </span>
             </NavigationMenuLink>
             <NavigationMenuLink href="/contrast-check">
               <span className="flex items-center justify-start gap-2">
-                <Contrast /> Analizador de contraste
+                <Contrast /> Contrast Analyzer
               </span>
             </NavigationMenuLink>
           </NavigationMenuContent>

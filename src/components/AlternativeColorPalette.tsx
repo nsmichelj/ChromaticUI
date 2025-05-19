@@ -18,14 +18,14 @@ import { generateHarmonyPalette } from "@/utils/colorHarmony";
 
 const harmonyOptions: HarmonyOption[] = [
   { value: "auto", label: "Auto" },
-  { value: "analogous", label: "Análogo", minColors: 3 },
-  { value: "complementary", label: "Complementario" },
-  { value: "triadic", label: "Triádico", minColors: 3 },
-  { value: "tetradic", label: "Tetrádico", minColors: 4 },
-  { value: "square", label: "Cuadrado", minColors: 4 },
+  { value: "analogous", label: "Analogous", minColors: 3 },
+  { value: "complementary", label: "Complementary" },
+  { value: "triadic", label: "Triadic", minColors: 3 },
+  { value: "tetradic", label: "Tetradic", minColors: 4 },
+  { value: "square", label: "Square", minColors: 4 },
   {
     value: "split-complementary",
-    label: "Complementario Dividido",
+    label: "Split Complementary",
     minColors: 3,
   },
 ];
@@ -68,12 +68,12 @@ export default function AlternativeColorPalette() {
           style={{ background: color }}
         />
         <div className="ms-3 text-sm font-normal">
-          Color {color} copiado al portapapeles
+          Color {color} copied to clipboard
         </div>
       </div>,
       {
         duration: 2000,
-      },
+      }
     );
   };
 
@@ -81,7 +81,7 @@ export default function AlternativeColorPalette() {
     setSchema(schema);
 
     const selectedOption = harmonyOptions.find(
-      (option) => option.value === schema,
+      (option) => option.value === schema
     );
     const minColors = selectedOption?.minColors || 2;
     setMinColors(minColors);
@@ -117,12 +117,12 @@ export default function AlternativeColorPalette() {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <p className="mb-2 text-lg font-bold">Variaciones armónicas</p>
+        <p className="mb-2 text-lg font-bold">Harmonic variations</p>
       </div>
 
       <div className="flex flex-col justify-start gap-4 sm:flex-row">
         <div className="flex flex-col justify-start gap-2 sm:flex-row sm:items-center">
-          <div className="text-sm font-semibold text-gray-500">Colores:</div>
+          <div className="text-sm font-semibold text-gray-500">Colors:</div>
           <Input
             type="number"
             min={minColors}
@@ -135,7 +135,7 @@ export default function AlternativeColorPalette() {
         </div>
 
         <div className="flex flex-col justify-start gap-2 sm:flex-row sm:items-center">
-          <div className="text-sm font-semibold text-gray-500">Esquema:</div>
+          <div className="text-sm font-semibold text-gray-500">Scheme:</div>
           <Select onValueChange={handleSelectSchema} defaultValue="auto">
             <SelectTrigger className="w-[240px] rounded-lg border-gray-400 bg-gray-50 p-2.5 text-gray-600 focus-visible:ring-1 md:text-base dark:bg-gray-800 dark:text-gray-50">
               <SelectValue />
