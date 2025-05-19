@@ -1,246 +1,246 @@
-# Contribuir a ChromaticUI 🎨
+# Contributing to ChromaticUI 🎨
 
-¡Gracias por querer mejorar ChromaticUI! Aquí te explicamos cómo hacerlo:
+Thank you for wanting to improve ChromaticUI! Here’s how you can do it:
 
-## Primeros pasos 🚀
+## Getting Started 🚀
 
-Antes de contribuir, asegúrate de cumplir estos requisitos y configurar tu entorno:
+Before contributing, make sure you meet these requirements and set up your environment:
 
-### Requisitos Previos
+### Prerequisites
 
-- Git: Sistema de control de versiones. [Instalar Git](https://git-scm.com/downloads)
-- Node.js: Entorno de ejecución de JavaScript. [Instalar Node.js](https://nodejs.org/en/download)
-- pnpm: Gestor de paquetes (alternativa a npm/yarn). [Instalar pnpm](https://pnpm.io/installation)
-- Visual Studio Code: Editor de código recomendado. [Instalar Visual Studio Code](https://code.visualstudio.com/download)
+- Git: Version control system. [Install Git](https://git-scm.com/downloads)
+- Node.js: JavaScript runtime. [Install Node.js](https://nodejs.org/en/download)
+- pnpm: Package manager (alternative to npm/yarn). [Install pnpm](https://pnpm.io/installation)
+- Visual Studio Code: Recommended code editor. [Install Visual Studio Code](https://code.visualstudio.com/download)
 
-Ademas debes estar familiarizado con las siguientes tecnologías:
+You should also be familiar with the following technologies:
 
-- React: [Documentación oficial](https://react.dev/).
-- Astro: [Guía de inicio](https://docs.astro.build/en/getting-started/).
-- Tailwind CSS: [Aprende a usarlo](https://tailwindcss.com/docs).
+- React: [Official documentation](https://react.dev/).
+- Astro: [Getting started guide](https://docs.astro.build/en/getting-started/).
+- Tailwind CSS: [Learn how to use it](https://tailwindcss.com/docs).
 
-## Cómo Contribuir 🤝
+## How to Contribute 🤝
 
-### 1. Configura tu Entorno
+### 1. Set Up Your Environment
 
-#### Fork del Repositorio
+#### Fork the Repository
 
-- Haz un `fork` del proyecto a tu cuenta de GitHub para tener tu propia copia. Para hacer esto:
-- Haz clic en el botón `Fork` en la parte superior derecha de la página del repositorio en GitHub.
-- Esto creará una copia del repositorio en tu cuenta de GitHub.
+- Fork the project to your GitHub account to have your own copy. To do this:
+- Click the `Fork` button at the top right of the repository page on GitHub.
+- This will create a copy of the repository in your GitHub account.
 
-#### Clona tu Fork
+#### Clone Your Fork
 
-- Clona el repositorio a tu máquina local:
-
-```bash
-git clone <URL del fork>
-cd nombre_del_repo
-```
-
-#### Añade el Repositorio Original como Remoto
-
-- Para mantener tu fork actualizado con los cambios del repositorio original, agrega el repositorio original como un remoto:
+- Clone the repository to your local machine:
 
 ```bash
-git remote add upstream <URL del repositorio original>
+git clone <URL of your fork>
+cd repo_name
 ```
 
-#### Instala las Dependencias
+#### Add the Original Repository as a Remote
 
-- Instala todas las dependencias necesarias:
+- To keep your fork updated with changes from the original repository, add the original repository as a remote:
+
+```bash
+git remote add upstream <URL of the original repository>
+```
+
+#### Install Dependencies
+
+- Install all necessary dependencies:
 
 ```bash
 pnpm i
 ```
 
-### 2. Trabaja en tus Cambios
+### 2. Work on Your Changes
 
-#### Sincroniza tu Fork
+#### Sync Your Fork
 
-- Antes de empezar, asegúrate de que tu fork esté actualizado con el repositorio original:
+- Before starting, make sure your fork is up to date with the original repository:
 
 ```bash
-# Desde la terminal:
+# From the terminal:
 git switch main
 git fetch upstream
 git merge upstream/main
 ```
 
-También puedes sincronizar desde GitHub haciendo clic en Sync Fork en la página de tu fork.
+You can also sync from GitHub by clicking Sync Fork on your fork’s page.
 
-#### Crea una Nueva Rama
+#### Create a New Branch
 
-- Nunca trabajes directamente en main/master .
-- Crea una nueva rama para tus cambios. Usa nombres descriptivos:
+- Never work directly on main/master.
+- Create a new branch for your changes. Use descriptive names:
 
 ```bash
-git switch -c feature/tu-mejora
+git switch -c feature/your-improvement
 ```
 
-Ejemplos:
+Examples:
 
-- `feature/nueva-funcion`
-- `fix/arreglar-color-picker`
-- `docs/actualizar-readme`
+- `feature/new-function`
+- `fix/fix-color-picker`
+- `docs/update-readme`
 
-#### Desarrolla tus Cambios
+#### Develop Your Changes
 
-- Implementa tus cambios o mejoras en tu rama local. Asegúrate de seguir las prácticas y estándares del proyecto.
+- Implement your changes or improvements on your local branch. Make sure to follow the project’s practices and standards.
 
-#### Prueba tus Cambios
+#### Test Your Changes
 
-- Ejecuta el servidor de desarrollo para revisar tus cambios en tiempo real:
+- Run the development server to review your changes in real time:
 
 ```bash
 pnpm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000) en tu navegador para probar tus cambios.
+Open [http://localhost:3000](http://localhost:3000) in your browser to test your changes.
 
-### Envía tus Cambios
+### Submit Your Changes
 
-#### 3. Commit de tus Cambios
+#### 3. Commit Your Changes
 
-- Haz commit de tus cambios con un mensaje claro y descriptivo. Usa la convención de commits:
-
-```bash
-git commit -m "tipo descripción (preferiblemente en ingles)"
-```
-
-- Usa [Conventional Commits](https://www.conventionalcommits.org/) para mensajes claros:
+- Commit your changes with a clear and descriptive message. Use the commit convention:
 
 ```bash
-git commit -m "tipo(ámbito): descripción (preferiblemente en ingles)"
-# Ejemplos:
-# - feat(picker): añade soporte para OKCHL
-# - fix(generator): corrige generación de tonos en Safari
-# - docs(readme): actualiza instrucciones de exportación
+git commit -m "type description (preferably in English)"
 ```
 
-#### Push a tu Fork
-
-- Haz push de tu rama con los cambios a tu fork en GitHub:
+- Use [Conventional Commits](https://www.conventionalcommits.org/) for clear messages:
 
 ```bash
-git push origin feature/tu-mejora
+git commit -m "type(scope): description (preferably in English)"
+# Examples:
+# - feat(picker): add OKCHL support
+# - fix(generator): fix tone generation in Safari
+# - docs(readme): update export instructions
 ```
 
-### Crea un Pull Request (PR)
+#### Push to Your Fork
 
-- Ve a tu fork en GitHub y haz clic en "Pull request" .
-- Describe claramente qué cambios has realizado y por qué son necesarios o útiles para el proyecto.
-- Incluye capturas de pantalla si afecta a la interfaz.
-- Usa etiquetas relevantes como `bug`, `enhancement`, `documentation`.
+- Push your branch with the changes to your fork on GitHub:
 
-### Reportar Issues
+```bash
+git push origin feature/your-improvement
+```
+
+### Create a Pull Request (PR)
+
+- Go to your fork on GitHub and click "Pull request".
+- Clearly describe what changes you made and why they are necessary or useful for the project.
+- Include screenshots if it affects the interface.
+- Use relevant labels like `bug`, `enhancement`, `documentation`.
+
+### Reporting Issues
 
 - Bugs:
-  - Usa la etiqueta `bug`.
-  - Describe cómo reproducir el error.
-  - Incluye sistema operativo, versión del navegador, etc.
-- Sugerencias :
-  - Usa la etiqueta `enhancement`.
-  - Explica por qué tu idea beneficiaría al proyecto.
+  - Use the `bug` label.
+  - Describe how to reproduce the error.
+  - Include OS, browser version, etc.
+- Suggestions:
+  - Use the `enhancement` label.
+  - Explain why your idea would benefit the project.
 
-## Buenas Prácticas 🌟
+## Best Practices 🌟
 
-Para garantizar que tus contribuciones sean útiles y fáciles de integrar, sigue estas recomendaciones:
+To ensure your contributions are useful and easy to integrate, follow these recommendations:
 
-### 1. Revisa Issues Abiertos
+### 1. Check Open Issues
 
-- Antes de empezar a trabajar en algo, revisa los [issues abiertos](https://github.com/NSMichelJ/ChromaticUI/issues).
-- Si encuentras un issue que puedes resolver y no hay una PR abierta para ello, ¡adelante!
-- Usa #numero-de-la-issue en tu commit o PR para vincularlo al issue correspondiente.
-
-```bash
-git commit -m "fix(generator): corrige generación de paletas #123"
-```
-
-Deja un comentario en el issue indicando que estás trabajando en ello. Esto ayuda a evitar duplicados.
-
-### 2. Revisa PRs Abiertas
-
-**Antes de abrir una nueva PR:**
-
-- Revisa las PRs abiertas para asegurarte de que no estás trabajando en algo que ya está en progreso.
-- Si alguien ya está trabajando en un cambio similar, puedes colaborar:
-  - Aporta sugerencias en los comentarios.
-  - Ayuda revisando su código.
-  - Ofrece pruebas adicionales si es necesario.
-
-### 3. Mantén tus Commits Limpios y Descriptivos
-
-- Haz commit de tus cambios con un mensaje claro y descriptivo. Usa la convención de commits:
+- Before starting work, check the [open issues](https://github.com/NSMichelJ/ChromaticUI/issues).
+- If you find an issue you can solve and there’s no open PR for it, go ahead!
+- Use #issue-number in your commit or PR to link it to the corresponding issue.
 
 ```bash
-git commit -m "tipo descripción (preferiblemente en ingles)"
+git commit -m "fix(generator): fix palette generation #123"
 ```
 
-- Usa [Conventional Commits](https://www.conventionalcommits.org/) para mensajes claros:
+Leave a comment on the issue indicating you’re working on it. This helps avoid duplicates.
+
+### 2. Check Open PRs
+
+**Before opening a new PR:**
+
+- Check open PRs to make sure you’re not working on something already in progress.
+- If someone is already working on a similar change, you can collaborate:
+  - Provide suggestions in the comments.
+  - Help review their code.
+  - Offer additional testing if needed.
+
+### 3. Keep Your Commits Clean and Descriptive
+
+- Commit your changes with a clear and descriptive message. Use the commit convention:
 
 ```bash
-git commit -m "tipo(ámbito): descripción (preferiblemente en ingles)"
+git commit -m "type description (preferably in English)"
 ```
 
-- feat: Nuevas funcionalidades.
-- fix: Correcciones de errores.
-- docs: Cambios en documentación.
-- style: Cambios de formato.
-- refactor : Refactorización de código.
-
-#### Ejemplo:
+- Use [Conventional Commits](https://www.conventionalcommits.org/) for clear messages:
 
 ```bash
-git commit -m "feat(export): añade exportación a Tailwind 4 con OKCHL #45"
+git commit -m "type(scope): description (preferably in English)"
 ```
 
-### 4. Sigue las Convenciones del Proyecto
+- feat: New features.
+- fix: Bug fixes.
+- docs: Documentation changes.
+- style: Formatting changes.
+- refactor: Code refactoring.
 
-- Astro: Mantén archivos modulares y componentizados.
-- React : Usa functional components y hooks.
-- Tailwind CSS : Prioriza clases de Tailwind antes de escribir CSS personalizado.
+#### Example
 
-### 5. Actualiza tu Rama con Frecuencia
+```bash
+git commit -m "feat(export): add export to Tailwind 4 with OKCHL #45"
+```
 
-- Para evitar conflictos, mantén tu rama sincronizada con la rama principal del proyecto.
+### 4. Follow Project Conventions
 
-### 6. Participa en Discusiones
+- Astro: Keep files modular and componentized.
+- React: Use functional components and hooks.
+- Tailwind CSS: Prioritize Tailwind classes before writing custom CSS.
 
-**Si recibes comentarios o sugerencias en tu PR:**
+### 5. Update Your Branch Frequently
 
-- Responde a tiempo y participa activamente en la conversación.
-- Haz los cambios necesarios y actualiza tu PR.
-- Si necesitas aclaraciones, no dudes en preguntar.
+- To avoid conflicts, keep your branch synced with the project’s main branch.
 
-### 7. Documenta tus Cambios
+### 6. Participate in Discussions
 
-- Si añades una nueva función, actualiza la documentación relevante (README, guías, etc.).
-- Explica claramente cómo usar tu nueva característica en la descripción del PR.
+**If you receive comments or suggestions on your PR:**
 
-## 📖 Código de Conducta
+- Respond promptly and participate actively in the conversation.
+- Make the necessary changes and update your PR.
+- If you need clarification, don’t hesitate to ask.
 
-Respeto y empatía son prioritarios en todas las interacciones.
+### 7. Document Your Changes
 
-### Valores Esperados
+- If you add a new feature, update the relevant documentation (README, guides, etc.).
+- Clearly explain how to use your new feature in the PR description.
 
-- ✅ Respeto:
-  - Comunícate con amabilidad, incluso en desacuerdos.
-  - Valora las contribuciones de otros, aunque no estés de acuerdo.
-- ✅ Constructividad:
-  - Críticas orientadas a soluciones, no a personas.
-  - Ejemplo: En lugar de "Esto está mal", prueba "¿Qué tal si probamos X?".
-- ✅ Inclusividad:
-  - Evita lenguaje excluyente (ej: "solo para expertos").
-  - Respeta diferencias culturales, de género y habilidades.
+## 📖 Code of Conduct
 
-### Conductas Inaceptables
+Respect and empathy are priorities in all interactions.
 
-- ❌ Acoso:
-  - Comentarios ofensivos, ataques personales o discriminación.
-- ❌ Lenguaje Tóxico:
-  - Humillaciones, sarcasmo destructivo o burlas.
-- ❌ Spam o Disrupción:
-  - Publicidad no solicitada, off-topic prolongado o sabotajes.
+### Expected Values
 
-> ✨ ¡Gracias por ayudar a crear la mejor herramienta de paletas de color! 🎨
+- ✅ Respect:
+  - Communicate kindly, even in disagreements.
+  - Value others’ contributions, even if you disagree.
+- ✅ Constructiveness:
+  - Criticism should be solution-oriented, not personal.
+  - Example: Instead of "This is wrong", try "What if we try X?".
+- ✅ Inclusivity:
+  - Avoid exclusive language (e.g., "for experts only").
+  - Respect cultural, gender, and ability differences.
+
+### Unacceptable Conduct
+
+- ❌ Harassment:
+  - Offensive comments, personal attacks, or discrimination.
+- ❌ Toxic Language:
+  - Humiliation, destructive sarcasm, or mockery.
+- ❌ Spam or Disruption:
+  - Unsolicited advertising, prolonged off-topic, or sabotage.
+
+> ✨ Thank you for helping create the best color palette tool! 🎨
