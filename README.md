@@ -31,7 +31,7 @@
 1. Clone the repository
 
 ```bash
-git clone https://github.com/tu-usuario/ChromaticUI.git
+git clone https://github.com/your-username/ChromaticUI.git
 cd ChromaticUI
 ```
 
@@ -71,19 +71,19 @@ ChromaticUI is open source and your help is welcome! 🙌
 2. Clone your fork:
 
 ```bash
-git clone <URL del fork>
+git clone <URL of your fork>
 ```
 
 3. Add the original repository as a remote:
 
 ```bash
-git remote add upstream <URL del repositorio original>
+git remote add upstream <URL of the original repository>
 ```
 
 4. Create a branch:
 
 ```bash
-git switch -c feature/tu-mejora
+git switch -c feature/your-improvement
 ```
 
 5. Develop and test your changes.
